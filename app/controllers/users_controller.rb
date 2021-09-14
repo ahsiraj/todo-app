@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     id = params[:id]
-    user = User.find(id)
+    user = User.find_by(id: id)
     response_text = (user == nil) ? "Not Found!" : user.to_pleasant_string
     render plain: response_text
   end

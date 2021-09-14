@@ -22,15 +22,6 @@ class UsersController < ApplicationController
     render plain: response_text
   end
 
-  def update
-    password = params[:password]
-    id = params[:id]
-    user = User.find(id)
-    user.password = password
-    user.save!
-    render plain: "Updated user password"
-  end
-
   def login
     email = params[:email]
     password = params[:password]

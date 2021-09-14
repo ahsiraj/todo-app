@@ -9,23 +9,33 @@ class UsersController < ApplicationController
   def show
     id = params[:id]
     user = User.find(id)
-    render plain: todo #.to_pleasant_string
+    response_text = (user == nil) ? "Not Found!" : user.to_pleasant_string
+    render plain: response_text
   end
 
   def create
     name = params[:name]
     email = params[:email]
-    new_user = User.create!(name: name, email: email)
-    response_text = "Hey, your new user is created with the id #{new_user.id}"
+    password = params[:password]
+    new_user = User.create!(name: name, email: email, password: password)
+    response_text = "The new user is created with the id #{new_user.id}"
     render plain: response_text
   end
 
   def update
-    completed = params[:completed]
+    password = params[:password]
     id = params[:id]
-    todo = Todo.find(id)
-    todo.completed = completed
-    todo.save!
-    render plain: "Updated todo completed status to #{completed}"
+    user = User.find(id)
+    user.password = password
+    user.save!
+    render plain: "Updated user password"
+  end
+
+  def login
+    email = params[:email]
+    password = params[:password]
+    user = User.find_by(email: email, password: password)
+    response_text = (user == nil) ? "false" : "true"
+    render plain: response_text
   end
 end

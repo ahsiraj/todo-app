@@ -83,9 +83,14 @@ body {
   align-items: center;
 }
 
+.TodoItem-container:hover {
+  background-color: #a9afcc;
+}
+
 .TodoItem-checkbox {
   width: 16px;
   height: 16px;
+  margin-right: 10px;
 }
 
 .TodoItem-overdueLabel {
@@ -100,4 +105,17 @@ body {
   margin-left: 10px;
   color: gray;
   display: inline;
+}
+
+.TodoItem-delete {
+  visibility: hidden;
+  margin-left: 8px;
+}
+
+.TodoItem-delete > img {
+  width: 20px;
+}
+
+.TodoItem-container:hover .TodoItem-delete {
+  visibility: visible;
 }

@@ -93,6 +93,10 @@ body {
   margin-right: 10px;
 }
 
+.TodoItem-deletedText {
+  text-decoration: line-through;
+}
+
 .TodoItem-overdueLabel {
   font-size: 12px;
   margin-left: 10px;

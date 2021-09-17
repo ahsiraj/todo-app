@@ -16,7 +16,7 @@
           <% end %>
 
           <% if show_due_date %>
-            <p class= "TodoItem-dueDate" >  <%= todo.due_date.to_s(:long) %> </p>
+            <p class= "TodoItem-dueDate" >  <%= todo.due_date.to_s(:rfc822) %> </p>
           <% end %>
           <a href="javascript:void(0)" class = "TodoItem-delete">
             <img src=delete.png alt="Delete" width="15" height="20">

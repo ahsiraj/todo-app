@@ -7,13 +7,11 @@
     <% todos.each do |todo| %>
       <li class="TodoItem">
         <label class="TodoItem-container">
-          <% if todo.completed %>
-            <input class="TodoItem-checkbox" type="checkbox" checked />
-            <p class = "TodoItem-deletedText"> <%= todo.todo_text %> </p>
-          <% else %>
-            <input class="TodoItem-checkbox" type="checkbox"  />
-            <%= todo.todo_text %>
-          <% end %>
+
+          <input class="TodoItem-checkbox" type="checkbox" <%= todo.completed ?
+                                                                 "checked" : "" %>  />
+          <p class = '<%= todo.completed ? "TodoItem-completedText" : "" %>' >
+            <%= todo.todo_text %> </p>
 
           <% if show_due_date %>
             <p class= "TodoItem-dueDate" >  <%= todo.due_date.to_s(:rfc822) %> </p>

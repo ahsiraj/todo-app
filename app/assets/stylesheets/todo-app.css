@@ -93,7 +93,7 @@ body {
   margin-right: 10px;
 }
 
-.TodoItem-deletedText {
+.TodoItem-completedText {
   text-decoration: line-through;
 }
 

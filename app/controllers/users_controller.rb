@@ -21,9 +21,9 @@ class UsersController < ApplicationController
     first_name = params[:first_name]
     last_name = params[:last_name]
     email = params[:email]
-    #password_digest = digest(params[:password])
+    password = params[:password]
     new_user = User.create!(first_name: first_name, last_name: last_name,
-                            email: email) #o, password_digest: password_digest)
+                            email: email, password: password)
     #response_text = "The new user is created with the id #{new_user.id}"
     #render plain: response_text
     redirect_to "/users/new"

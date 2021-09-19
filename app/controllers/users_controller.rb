@@ -1,6 +1,10 @@
 # todos_conntroller.rb
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
+
+  def new
+    render "users/new"
+  end
 
   def index
     render plain: User.order(:name).map { |user| user.to_pleasant_string }.join("\n")
@@ -14,12 +18,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    name = params[:name]
+    first_name = params[:first_name]
+    last_name = params[:last_name]
     email = params[:email]
-    password = params[:password]
-    new_user = User.create!(name: name, email: email, password: password)
-    response_text = "The new user is created with the id #{new_user.id}"
-    render plain: response_text
+    #password_digest = digest(params[:password])
+    new_user = User.create!(first_name: first_name, last_name: last_name,
+                            email: email) #o, password_digest: password_digest)
+    #response_text = "The new user is created with the id #{new_user.id}"
+    #render plain: response_text
+    redirect_to "/users/new"
+    return
   end
 
   def login

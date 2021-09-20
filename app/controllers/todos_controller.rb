@@ -3,6 +3,7 @@ class TodosController < ApplicationController
   #skip_before_action :verify_authenticity_token
 
   def index
+    #@current_user = current_user
     render "index"
   end
 

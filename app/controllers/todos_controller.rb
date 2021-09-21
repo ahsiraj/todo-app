@@ -3,8 +3,10 @@ class TodosController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    #@todos = Todo.where(user_id: current_user.id)
-    @todos = Todo.of_user(current_user)
+    #@todos = Todo.where(user_id: current_user.id) --first
+    #@todos = Todo.of_user(current_user) --second
+    # Now simpler
+    @todos = current_user.todos
     render "index"
   end
 

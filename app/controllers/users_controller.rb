@@ -10,8 +10,7 @@ class UsersController < ApplicationController
     password = params[:password]
     new_user = User.new(first_name: first_name, last_name: last_name,
                         email: email, password: password)
-    #response_text = "The new user is created with the id #{new_user.id}"
-    #render plain: response_text
+
     if new_user.save
       session[:current_user_id] = new_user.id
       redirect_to "/"
@@ -19,6 +18,5 @@ class UsersController < ApplicationController
       flash[:error] = new_user.errors.full_messages.join(", ")
       redirect_to "/"
     end
-    return
   end
 end

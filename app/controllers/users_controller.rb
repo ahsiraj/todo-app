@@ -12,7 +12,8 @@ class UsersController < ApplicationController
                             email: email, password: password)
     #response_text = "The new user is created with the id #{new_user.id}"
     #render plain: response_text
-    redirect_to "/users/new"
+    session[:current_user_id] = new_user.id
+    redirect_to "/"
     return
   end
 end
